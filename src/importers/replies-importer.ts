@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/** TODO: tighten types when time allows. */
+
 import { ProjectImporter } from '@ds-wizard/plugin-sdk/project-importer'
 
 const KEY_ENTITIES = 'entities'
@@ -82,7 +85,7 @@ export default class RepliesImporter {
         }
     }
 
-    importQuestionValue(phase: number, path: string[], newPath: string[], question: any) {
+    importQuestionValue(phase: number, path: string[], newPath: string[]) {
         if (phase === 1) {
             const reply = this.extractReply(path)
             if (reply !== undefined) {
@@ -91,7 +94,7 @@ export default class RepliesImporter {
         }
     }
 
-    importQuestionIntegration(phase: number, path: string[], newPath: string[], question: any) {
+    importQuestionIntegration(phase: number, path: string[], newPath: string[]) {
         if (phase === 1) {
             const reply = this.extractReply(path)
             if (reply !== undefined) {
@@ -120,7 +123,7 @@ export default class RepliesImporter {
         })
     }
 
-    importQuestionMultiChoice(phase: number, path: string[], newPath: string[], question: any) {
+    importQuestionMultiChoice(phase: number, path: string[], newPath: string[]) {
         if (phase === 1) {
             const reply = this.extractReply(path)
             if (reply !== undefined) {
@@ -129,7 +132,7 @@ export default class RepliesImporter {
         }
     }
 
-    importQuestionItemSelect(phase: number, path: string[], newPath: string[], question: any) {
+    importQuestionItemSelect(phase: number, path: string[], newPath: string[]) {
         if (phase === 2) {
             const reply = this.extractReply(path)
             if (reply !== undefined) {
@@ -157,12 +160,7 @@ export default class RepliesImporter {
                 )
                 break
             case 'ValueQuestion':
-                this.importQuestionValue(
-                    phase,
-                    [...path, questionUuid],
-                    [...newPath, questionUuid],
-                    question,
-                )
+                this.importQuestionValue(phase, [...path, questionUuid], [...newPath, questionUuid])
                 break
             case 'ListQuestion':
                 this.importQuestionList(
@@ -177,7 +175,6 @@ export default class RepliesImporter {
                     phase,
                     [...path, questionUuid],
                     [...newPath, questionUuid],
-                    question,
                 )
                 break
             case 'MultiChoiceQuestion':
@@ -185,7 +182,6 @@ export default class RepliesImporter {
                     phase,
                     [...path, questionUuid],
                     [...newPath, questionUuid],
-                    question,
                 )
                 break
             case 'ItemSelectQuestion':
@@ -193,7 +189,6 @@ export default class RepliesImporter {
                     phase,
                     [...path, questionUuid],
                     [...newPath, questionUuid],
-                    question,
                 )
                 break
         }
@@ -230,7 +225,7 @@ export default class RepliesImporter {
                 return true
             }
             this.error = `Unsupported metamodel version: ${metamodelVersion}`
-        } catch (e) {
+        } catch {
             this.error = 'Unknown metamodel version (wrong JSON file).'
         }
         return false

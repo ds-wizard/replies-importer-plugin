@@ -28,7 +28,7 @@ export default function RepliesImporterComponent({
 
                 setError(null)
                 onImport(importer.getEvents())
-            } catch (err) {
+            } catch {
                 setError(
                     'Error reading or parsing file. Make sure you selected a valid JSON document.',
                 )

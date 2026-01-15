@@ -1,0 +1,34 @@
+name: Zip
+
+on:
+    push:
+    pull_request:
+
+jobs:
+    zip:
+        name: Build Zip
+        runs-on: ubuntu-latest
+
+        env:
+            NODE_VERSION: 24
+
+        steps:
+            - name: '[setup] Checkout Project'
+              uses: actions/checkout@v6
+
+            - name: '[setup] Node.js ${{ matrix.node-version }}'
+              uses: actions/setup-node@v6
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+
+            - name: '[app] Install'
+              run: npm install
+
+            - name: '[app] Build'
+              run: npm run build
+
+            - name: '[release] Create artifact'
+              uses: actions/upload-artifact@v6
+              with:
+                  name: plugin
+                  path: dist
