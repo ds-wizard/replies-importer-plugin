@@ -63,11 +63,11 @@ export default function RepliesImporterComponent({
                             onChange={handleFileChange}
                         />
                     </div>
-                    <p className="mt-2">
+                    <p className="mt-2 text-muted">
                         To obtain the file for import, go to your source project, create a JSON
                         document using <em>Questionnaire Report</em> template, and download it.
-                        <br />
-                        <br />
+                    </p>
+                    <p className="mt-2 text-muted">
                         Please note that file replies will not be imported (as file contents are not
                         part of the JSON replies export).
                     </p>

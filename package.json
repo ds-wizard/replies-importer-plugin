@@ -13,7 +13,7 @@
     "dev": "concurrently -k \"npm run build:watch\" \"npm run serve:dist\"",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\" && eslint src --fix",
     "lint": "eslint src",
-    "serve:dist": "vite preview --strictPort --port 4173",
+    "serve:dist": "vite preview --strictPort --port 4201",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
