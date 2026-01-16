@@ -1,30 +1,14 @@
-# DSW Plugin Template
+# Replies Importer Plugin
 
-Template repository to create DSW plugins.
+_Import from replies in JSON exported from DSW._
 
-## Get Started
+## Changelog
 
-1. Fill in the [project metadata](src/metadata.ts).
-1. Define [settings](src/data/settings-data.ts) and [user settings](src/data/user-settings-data.ts) data using [zod](https://zod.dev).
-    - If you don't want to have any settings, you can delete these files and use `PluginBuilder.createWithNoSettings` instead.
-    - If you want just one, you can delete the other and create a null codec instead using `makeNullCodec()`.
-1. Start implementing your plugin by defining the components in the [components](src/components) folder and adding them to the PluginBuilder in [plugin.ts](src/plugin.ts). See [@ds-wizard/plugin-sdk](https://github.com/ds-wizard/dsw-plugin-sdk) for more details.
+### 0.1.0
 
-## Useful Commands
+Initial version based on [DSW Replies Importer](https://github.com/ds-wizard/dsw-replies-importer).
 
-- `npm run build` = creates a production build of the plugin
-- `npm run dev` = watch for file changes and run the dev server (you can change the port in package.json)
-- `npm run typecheck` = check for type errors
-- `npm run lint` = run linter
-- `npm run format` = format the code (however, it is more convenient to set up formatter directly in VS Code, see below)
+## License
 
-### Formatter in VS Code
-
-Create `.vscode/settings.json` for easier code editing:
-
-```json
-{
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-}
-```
+This project is licensed under the MIT License - see the
+[LICENSE](LICENSE) file for more details.
