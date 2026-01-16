@@ -28,10 +28,14 @@ export default function RepliesImporterComponent({
 
                 setError(null)
                 onImport(importer.getEvents())
-            } catch {
-                setError(
-                    'Error reading or parsing file. Make sure you selected a valid JSON document.',
-                )
+            } catch (error) {
+                if (typeof error === 'string') {
+                    setError(error)
+                } else {
+                    setError(
+                        'Error reading or parsing file. Make sure you selected a valid JSON document.',
+                    )
+                }
             }
         }
         reader.readAsText(file)

@@ -6,6 +6,7 @@ import { ProjectImporter } from '@ds-wizard/plugin-sdk/project-importer'
 const KEY_ENTITIES = 'entities'
 const KEY_VALUE = 'value'
 const KEY_TYPE = 'type'
+const KEY_ID = 'id'
 const KEY_RAW = 'raw'
 const KEYS_VERSION = [
     'metamodelVersion',
@@ -29,6 +30,7 @@ function extractKey(data: any, keys: string[]) {
 export default class RepliesImporter {
     protected importer: ProjectImporter
     protected error: string | null
+    protected metamodelVersion: number = 0
     protected replies: Record<string, any>
     protected km: Record<string, any>
     protected itemUuids: Map<string, string>
@@ -101,9 +103,15 @@ export default class RepliesImporter {
                 const integrationReply = reply[KEY_VALUE][KEY_VALUE]
                 const replyValue = integrationReply[KEY_VALUE]
                 const replyType = integrationReply[KEY_TYPE]
-                if (replyType === 'IntegrationType') {
+                if (replyType === 'IntegrationType' && this.metamodelVersion >= 17) {
                     const replyRaw = integrationReply[KEY_RAW]
                     this.importer.setIntegrationReply(newPath, replyValue, replyRaw)
+                } else if (
+                    replyType === 'IntegrationLegacyType' ||
+                    (replyType === 'IntegrationType' && this.metamodelVersion < 17)
+                ) {
+                    const replyId = integrationReply[KEY_ID]
+                    this.importer.setIntegrationReplyLegacy(newPath, replyValue, replyId)
                 } else {
                     this.importer.setReply(newPath, replyValue)
                 }
@@ -213,6 +221,7 @@ export default class RepliesImporter {
     loadData(data: any) {
         try {
             const metamodelVersion = parseFloat(extractKey(data, KEYS_VERSION))
+            this.metamodelVersion = metamodelVersion
             if (4 <= metamodelVersion && metamodelVersion < 18.0) {
                 if (metamodelVersion >= 14) {
                     this.km = data['knowledgeModel']
@@ -233,7 +242,7 @@ export default class RepliesImporter {
 
     import(data: any) {
         if (!this.loadData(data)) {
-            throw 'Unsupported data provided.'
+            throw this.error ? this.error : 'Unsupported data provided.'
         }
         this.importProject(1) // Phase 1: import all and create items
         this.importProject(2) // Phase 2: import item select (new item UUIDs prepared)
