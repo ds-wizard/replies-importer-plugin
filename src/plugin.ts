@@ -1,7 +1,8 @@
-import { Plugin } from '@ds-wizard/plugin-sdk/types'
 import { PluginBuilder } from '@ds-wizard/plugin-sdk/core'
-import { pluginMetadata } from './metadata'
+import { Plugin } from '@ds-wizard/plugin-sdk/types'
+
 import RepliesImporterComponent from './components/RepliesImporterComponent'
+import { pluginMetadata } from './metadata'
 
 export default function (_settingsInput: unknown, _userSettingsInput: unknown): Plugin {
     const plugin: Plugin = PluginBuilder.createWithNoSettings(pluginMetadata)

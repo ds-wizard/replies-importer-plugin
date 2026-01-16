@@ -1,6 +1,7 @@
-import { ChangeEvent, useState } from 'react'
 import { ProjectImporterComponentProps } from '@ds-wizard/plugin-sdk/elements'
 import { ProjectImporter } from '@ds-wizard/plugin-sdk/project-importer'
+import { ChangeEvent, useState } from 'react'
+
 import RepliesImporter from '../importers/replies-importer'
 
 export default function RepliesImporterComponent({
@@ -43,16 +44,14 @@ export default function RepliesImporterComponent({
 
     return (
         <div className="col col-detail mx-auto">
-            <div id="importer">
+            <div>
                 <div className="mb-3">
                     <h2>Replies Importer</h2>
                 </div>
                 <div className="mb-3">
                     {error && (
-                        <div id="error">
-                            <div className="alert alert-danger" role="alert" id="error-alert">
-                                {error}
-                            </div>
+                        <div className="alert alert-danger" role="alert" id="error-alert">
+                            {error}
                         </div>
                     )}
                     <div className="form-group">
