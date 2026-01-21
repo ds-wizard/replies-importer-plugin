@@ -7,7 +7,7 @@ import { pluginMetadata } from './metadata'
 export default function (_settingsInput: unknown, _userSettingsInput: unknown): Plugin {
     const plugin: Plugin = PluginBuilder.createWithNoSettings(pluginMetadata)
         .addProjectImporter(
-            'Replies Importer',
+            'Replies',
             'replies-importer',
             'x-replies-importer',
             RepliesImporterComponent,

@@ -9,7 +9,7 @@ export default function RepliesImporterComponent({
     return (
         <SimpleFileImporter
             onImport={onImport}
-            heading="Replies Importer"
+            heading="Import Replies"
             label="Select a file with replies in JSON"
             description={
                 <>
