@@ -1,5 +1,5 @@
 import { ProjectImporterComponentProps } from '@ds-wizard/plugin-sdk/elements'
-import { SimpleImporter } from '@ds-wizard/plugin-sdk/ui/SimpleImporter'
+import { SimpleFileImporter } from '@ds-wizard/plugin-sdk/ui/SimpleFileImporter'
 
 import RepliesImporter from '../importers/replies-importer'
 
@@ -7,7 +7,7 @@ export default function RepliesImporterComponent({
     onImport,
 }: ProjectImporterComponentProps<null, null>) {
     return (
-        <SimpleImporter
+        <SimpleFileImporter
             onImport={onImport}
             heading="Replies Importer"
             label="Select a file with replies in JSON"
