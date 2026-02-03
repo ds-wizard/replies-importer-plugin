@@ -10,8 +10,11 @@ updates:
       target-branch: 'develop'
       assignees:
           - 'janslifka'
-      labels:
-          - 'dependencies'
+      groups:
+          minor-and-patch:
+              update-types:
+                  - 'minor'
+                  - 'patch'
 
     - package-ecosystem: 'github-actions'
       directory: '/'
@@ -23,5 +26,3 @@ updates:
       target-branch: 'develop'
       assignees:
           - 'janslifka'
-      labels:
-          - 'dependencies'
