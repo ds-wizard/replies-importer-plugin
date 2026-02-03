@@ -135,7 +135,7 @@ export default class RepliesImporter {
         if (phase === 1) {
             const reply = this.extractReply(path)
             if (reply !== undefined) {
-                this.importer.setReply(newPath, reply[KEY_VALUE][KEY_VALUE])
+                this.importer.setListReply(newPath, reply[KEY_VALUE][KEY_VALUE])
             }
         }
     }
