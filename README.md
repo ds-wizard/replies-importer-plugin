@@ -8,6 +8,10 @@ See the [Plugins](https://guide.ds-wizard.org/en/latest/more/self-hosted-dsw/con
 
 ## Changelog
 
+### 1.1.0
+
+Updated Plugin SDK to 0.7.0.
+
 ### 1.0.0
 
 Initial version based on [DSW Replies Importer](https://github.com/ds-wizard/dsw-replies-importer).
