@@ -36,7 +36,7 @@ jobs:
                   type=sha
 
             - name: '[docker] Docker build'
-              uses: docker/build-push-action@v6
+              uses: docker/build-push-action@v7
               with:
                 context: ${{ env.DOCKER_META_CONTEXT }}
                 file: ${{ env.DOCKER_META_FILE }}
@@ -67,7 +67,7 @@ jobs:
                   type=semver,pattern={{major}},enable=${{ !startsWith(github.ref, 'refs/tags/v0.') }}
 
             - name: '[docker-hub] Docker build+push'
-              uses: docker/build-push-action@v6
+              uses: docker/build-push-action@v7
               if: github.event_name != 'pull_request' && steps.meta-public.outputs.tags != ''
               with:
                 context: ${{ env.DOCKER_META_CONTEXT }}
