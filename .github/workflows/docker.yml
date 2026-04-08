@@ -24,7 +24,7 @@ jobs:
 
             - name: '[setup] Set up Docker Buildx'
               id: buildx
-              uses: docker/setup-buildx-action@v3
+              uses: docker/setup-buildx-action@v4
 
             - name: '[docker] Docker meta'
               id: meta-test
