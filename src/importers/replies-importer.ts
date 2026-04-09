@@ -111,7 +111,7 @@ export default class RepliesImporter {
                     (replyType === 'IntegrationType' && this.metamodelVersion < 17)
                 ) {
                     const replyId = integrationReply[KEY_ID]
-                    this.importer.setIntegrationReplyLegacy(newPath, replyValue, replyId)
+                    this.importer.setIntegrationReply(newPath, replyValue, { id: replyId })
                 } else {
                     this.importer.setReply(newPath, replyValue)
                 }
@@ -222,8 +222,11 @@ export default class RepliesImporter {
         try {
             const metamodelVersion = parseFloat(extractKey(data, KEYS_VERSION))
             this.metamodelVersion = metamodelVersion
-            if (4 <= metamodelVersion && metamodelVersion < 18.0) {
-                if (metamodelVersion >= 14) {
+            if (4 <= metamodelVersion && metamodelVersion < 19.0) {
+                if (metamodelVersion >= 18) {
+                    this.km = data['knowledgeModel']
+                    this.replies = data['project']['replies']
+                } else if (metamodelVersion >= 14) {
                     this.km = data['knowledgeModel']
                     this.replies = data['questionnaire']['replies']
                 } else {
