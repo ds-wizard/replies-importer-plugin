@@ -18,6 +18,10 @@ export default defineConfig(({ mode }) => {
             },
         },
 
+        preview: {
+            cors: true,
+        },
+
         // Ensure the bundle works in a plain browser host (no Node "process")
         define: {
             'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development'),
