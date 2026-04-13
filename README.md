@@ -2,6 +2,8 @@
 
 _Import from replies in JSON exported from DSW._
 
+Plugin UUID: `6534f8f7-0d43-4c4d-9157-15af17f37649`
+
 ## How to install
 
 See the [Plugins](https://guide.ds-wizard.org/en/latest/more/self-hosted-dsw/configuration/plugins.html) page in the DSW Guide for instructions on how to install the plugin.
