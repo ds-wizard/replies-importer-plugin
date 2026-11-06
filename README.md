@@ -10,6 +10,10 @@ See the [Plugins](https://guide.ds-wizard.org/en/latest/more/self-hosted-dsw/con
 
 ## Changelog
 
+### 1.3.0
+
+Updated Plugin SDK to 0.12.0 (requires Wizard 5.0).
+
 ### 1.2.0
 
 - Added support for metamodel 18.
